@@ -1,0 +1,10 @@
+<h1>{{ player.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% csrf_token %}
+{% for character in player.character_set.all %}
+    
+    <label for="character{{ forloop.counter }}">{{ character.name }}</label><br />
+{% endfor %}
+</form>

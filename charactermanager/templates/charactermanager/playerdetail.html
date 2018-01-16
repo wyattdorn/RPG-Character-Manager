@@ -1,0 +1,18 @@
+{% load static %}
+
+<h1>{{ player.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'charactermanager/defaultStyle.css' %}" />
+
+{% csrf_token %}
+{% for character in player.character_set.all %}
+    <a href="{% url 'charactermanager:characterdetail' character.id %}">
+    <label for="character{{ forloop.counter }}">{{ character.name }}</label>
+    </a>
+    <br>
+{% endfor %}
+</form>
+
+{% include "charactermanager/footer.html" %}

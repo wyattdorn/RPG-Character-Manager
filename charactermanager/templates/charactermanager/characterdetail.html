@@ -1,0 +1,17 @@
+{% load static %}
+
+<h1>{{ character.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'charactermanager/defaultStyle.css' %}" />
+
+{% csrf_token %}
+<li>Class: {{character.get_character_class_display}}</li>
+<li>Subclass: {{character.sub_class}}</li>
+<li>Level: {{character.level}}</li>
+<li>Race: {{character.race}}</li>
+
+</form>
+
+{% include "charactermanager/footer.html" %}

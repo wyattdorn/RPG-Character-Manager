@@ -1,0 +1,41 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'charactermanager/playerListStyle.css' %}" />
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% include "charactermanager/header.html" %}
+
+<div class="player-list">
+  {% if players %}
+    <ul>
+    {% for player in players %}
+        {# Each "players" is a Player model object. #}
+        <li>
+          <a href="{% url 'charactermanager:playerdetail' player.id %}">{{ player.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+      <p>No players are available.</p>
+  {% endif %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if players.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ players.previous_page_number }}">previous({{players.previous_page_number}})</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ players.number }} of {{ players.paginator.num_pages }}
+        </span>
+
+        {% if players.has_next %}
+            <a href="?page={{ players.next_page_number }}">next({{players.next_page_number}})</a>
+            <a href="?page={{ players.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% include "charactermanager/footer.html" %}

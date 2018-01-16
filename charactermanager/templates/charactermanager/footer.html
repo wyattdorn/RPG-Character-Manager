@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'charactermanager/defaultStyle.css' %}" />
+
+<div class="footer-links">
+  <a href="{% url 'charactermanager:index' %}">Home</a>
+  --
+  <a href="{% url 'charactermanager:playerlist' %}">Player list </a>
+  --
+  <a href="{% url 'charactermanager:characterlist' %}">Character list</a>
+</div>
