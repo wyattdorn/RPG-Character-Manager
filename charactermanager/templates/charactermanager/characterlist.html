@@ -1,5 +1,7 @@
 {% load static %}
 
+{% include "charactermanager/header.html" %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'charactermanager/characterListStyle.css' %}" />
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

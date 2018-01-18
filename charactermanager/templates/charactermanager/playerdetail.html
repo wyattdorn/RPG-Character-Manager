@@ -1,5 +1,7 @@
 {% load static %}
 
+{% include "charactermanager/header.html" %}
+
 <h1>{{ player.name }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

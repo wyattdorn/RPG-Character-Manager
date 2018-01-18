@@ -1,0 +1,20 @@
+body {
+    background-color: black;
+}
+
+li{
+  color: yellow;
+}
+
+li a {
+    color: green;
+}
+
+h1 {
+  color: white;
+}
+
+#RPGCMBanner{
+  display: flex;
+	justify-content: center;
+}

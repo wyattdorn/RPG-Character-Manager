@@ -1,13 +1,23 @@
 {% load static %}
 
+{% include "charactermanager/header.html" %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'charactermanager/indexStyle.css' %}" />
 
-<h1>Welcome to Wyatt Dorn's LARP Character Manager!</h1>
-<br>
+<div id="main">
+  <div id="title">
+    <h1>
+      Welcome to Wyatt Dorn's LARP Character Manager!
+    </h1>
+  </div>
 
-<div id="intro">
-  This website serves to help organise a list of all players and their associated characters in large scale role-playing games. <br>
-  This tool can be used for LARP's, Western Marches style D&D games, or any other similar system. <br>
+  <br>
+
+  <div id="intro">
+    This website serves to help organise a list of all players and their associated characters in large scale role-playing games. <br>
+    This tool can be used for LARP's, Western Marches style D&D games, or any other similar system. <br>
+  </div>
+  <br>
 </div>
 
 {% include "charactermanager/footer.html" %}

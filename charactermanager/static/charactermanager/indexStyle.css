@@ -10,6 +10,14 @@ h1 {
   color: white;
 }
 
+#title{
+  display: flex;
+	justify-content: center;
+  color: white;
+}
+
 #intro{
+  display: flex;
+	justify-content: center;
   color: white;
 }
