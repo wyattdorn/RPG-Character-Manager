@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import get_object_or_404, render
 
-from .models import Character, Player
+from .models import Character, Player, Vampire
 
 
 def index(request):
@@ -24,16 +24,20 @@ def playerlist(request):
 
 def characterlist(request):
 
-    character_list = Character.objects.all()
-    paginator = Paginator(character_list.order_by('name'), 10) # Show 25 contacts per page
+    vampire_list = Vampire.objects.all()
+    paginator = Paginator(vampire_list.order_by('name'), 10) # Show 25 contacts per page
 
     page = request.GET.get('page')
-    characters = paginator.get_page(page)
-    return render(request, 'charactermanager/characterlist.html', {'characters': characters})
+    vampires = paginator.get_page(page)
+    return render(request, 'charactermanager/characterlist.html', {'vampires': vampires})
 
-    #character_list = Character.objects.order_by('name')[:30]
-    #context = {'character_list': character_list}
-    #return render(request, 'charactermanager/characterlist.html', context)
+    # FOR USE WITH CHARACTER OBJECTS (5E)
+    # character_list = Character.objects.all()
+    # paginator = Paginator(character_list.order_by('name'), 10) # Show 25 contacts per page
+    #
+    # page = request.GET.get('page')
+    # characters = paginator.get_page(page)
+    # return render(request, 'charactermanager/characterlist.html', {'characters': characters})
 
 def playerdetail(request, player_id):
     player = get_object_or_404(Player, pk=player_id)

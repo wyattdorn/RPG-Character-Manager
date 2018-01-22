@@ -1,0 +1,49 @@
+{% load static %}
+
+{% include "charactermanager/header.html" %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'charactermanager/characterListStyle.css' %}" />
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div class="character-list">
+  {% if characters %}
+    <table style="width:20%">
+    {% for character in characters %}
+        {# Each "characters" is a Character model object. #}
+        <tr>
+          <td>
+            <a href="{% url 'charactermanager:characterdetail' character.id %}">
+              {{ character.name }}
+            </a>
+          </td>
+          <td>
+            {# Loads the icon for each class, with each icon being named after the two letter abreviation for it's respective class #}
+            <img src="{% static "images/"%}{{character.character_class}}.svg" alt="{{character.get_character_class_display}}" id="weapon-icon">
+          </td>
+        </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+      <p>No characters are available.</p>
+  {% endif %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if characters.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ characters.previous_page_number }}">previous({{characters.previous_page_number}})</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ characters.number }} of {{ characters.paginator.num_pages }}
+        </span>
+
+        {% if characters.has_next %}
+            <a href="?page={{ characters.next_page_number }}">next({{characters.next_page_number}})</a>
+            <a href="?page={{ characters.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% include "charactermanager/footer.html" %}

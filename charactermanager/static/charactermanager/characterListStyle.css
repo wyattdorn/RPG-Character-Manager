@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: darkred;
 }
 
 a {
@@ -10,6 +10,6 @@ h3 {
   color: white;
 }
 
-#weapon-icon{
+#clan-icon{
   height:52px;
 }
